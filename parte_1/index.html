@@ -27,6 +27,8 @@
 
     </h1>
 
+    <input type="number" v-model="value">
+    <span>{{ convertedValue }}</span>
 
     <ul>
       <li v-for="(p, i) in prices" v-bind:key="p">{{ i }} - {{ p }}</li>
