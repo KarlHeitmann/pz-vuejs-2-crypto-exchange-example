@@ -86,16 +86,21 @@
           <span class="text-xl"></span>
         </div>
       </div>
-      <line-chart class="my-10"
+      <line-chart
+        class="my-10"
         :colors="['orange']"
         :min="min"
         :max="max"
-        :data="history.map(h => [h.date, parseFloat(h.priceUsd).toFixed(2)])"
+        :data="history.map((h) => [h.date, parseFloat(h.priceUsd).toFixed(2)])"
       />
 
       <h3 class="text-xl my-10">Mejores Ofertas de Cambio</h3>
       <table>
-        <tr v-for="m in markets" :key="`${m.exchangeId}-${m.priceUsd}`" class="border-b">
+        <tr
+          v-for="m in markets"
+          :key="`${m.exchangeId}-${m.priceUsd}`"
+          class="border-b"
+        >
           <td>
             <b>{{ m.exchangeId }}</b>
           </td>
@@ -139,14 +144,14 @@ export default {
 
   created() {
     this.getCoin()
-
   },
 
   methods: {
     getWebSite(exchange) {
       this.$set(exchange, 'isLoading', true)
-      return api.getExchange(exchange.exchangeId)
-        .then(res => {
+      return api
+        .getExchange(exchange.exchangeId)
+        .then((res) => {
           this.$set(exchange, 'url', res.exchangeUrl)
         })
         .finally(() => {
@@ -157,14 +162,17 @@ export default {
     getCoin() {
       const id = this.$route.params.id
       this.isLoading = true
-      Promise.all([api.getAsset(id), api.getAssetHistory(id), api.getMarkets(id)]).then(
-        ([asset, history, markets]) => {
+      Promise.all([
+        api.getAsset(id),
+        api.getAssetHistory(id),
+        api.getMarkets(id),
+      ])
+        .then(([asset, history, markets]) => {
           this.asset = asset
           this.history = history
           this.markets = markets
-        }
-      )
-      .finally(() => this.isLoading = false)
+        })
+        .finally(() => (this.isLoading = false))
     },
   },
 

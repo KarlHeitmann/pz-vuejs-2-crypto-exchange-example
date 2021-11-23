@@ -32,11 +32,12 @@
         <td>
           <router-link
             class="hover:underline text-green-600"
-            :to="{name: 'coin-detail', params: {id: a.id} }">
-          {{ a.name }}
+            :to="{ name: 'coin-detail', params: { id: a.id } }"
+          >
+            {{ a.name }}
           </router-link>
           <small class="ml-1 text-gray-500">
-            {{a.symbol}}
+            {{ a.symbol }}
           </small>
         </td>
         <td>{{ a.priceUsd | dollar }}</td>
@@ -51,7 +52,9 @@
           {{ a.changePercent24Hr | percent }}
         </td>
         <td class="hidden sm:block">
-          <px-button @custom-click="goToCoin(a.id)"><span>Detalle</span></px-button>
+          <px-button @custom-click="goToCoin(a.id)"
+            ><span>Detalle</span></px-button
+          >
         </td>
       </tr>
     </tbody>
@@ -73,9 +76,9 @@ export default {
 
   methods: {
     goToCoin(id) {
-      this.$router.push({ name: 'coin-detail', params: { id }}) // Me permite acceder al objeto $router con el cual yo lo puedo usar para navegar
-    }
-  }
+      this.$router.push({ name: 'coin-detail', params: { id } }) // Me permite acceder al objeto $router con el cual yo lo puedo usar para navegar
+    },
+  },
 }
 </script>
 
