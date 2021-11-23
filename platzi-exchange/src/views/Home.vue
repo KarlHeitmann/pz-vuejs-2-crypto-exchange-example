@@ -5,10 +5,10 @@
 </template>
 
 <script>
-import PxAssetsTable from "@/components/PxAssetsTable";
+import PxAssetsTable from '@/components/PxAssetsTable'
 
 export default {
-  name: "Home",
+  name: 'Home',
   components: { PxAssetsTable },
-};
+}
 </script>
