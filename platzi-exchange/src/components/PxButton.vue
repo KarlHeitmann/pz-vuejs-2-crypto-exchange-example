@@ -15,8 +15,10 @@
     "
   >
     <!-- @click es un alias para v-on:click -->
-    <beat-loader :loading="isLoading" :color="'#68d391'" :size="100" />
-    <slot v-show="isLoading"></slot>
+    <beat-loader :loading="isLoading" :color="'#68d391'" :size="8" />
+    <p v-show="!isLoading">
+      <slot></slot>
+    </p>
   </button>
 </template>
 <script>
