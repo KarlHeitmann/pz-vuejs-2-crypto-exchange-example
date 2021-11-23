@@ -4,9 +4,9 @@
       <tr class="bg-gray-100 border-b-2 border-gray-400">
         <th></th>
         <th :class="{ up: this.sortOrder === 1, down: this.sortOrder === -1 }">
-          <span
-            class="underline cursor-pointer"
-            @click="changeSortOrder">Ranking</span>
+          <span class="underline cursor-pointer" @click="changeSortOrder"
+            >Ranking</span
+          >
         </th>
         <th>Nombre</th>
         <th>Precio</th>
@@ -14,7 +14,14 @@
         <th>Variación 24hs</th>
         <td class="hidden sm:block">
           <input
-            class="bg-gray-100 focus:outline-none border-b border-gray-400 py-2 px-4 block"
+            class="
+              bg-gray-100
+              focus:outline-none
+              border-b border-gray-400
+              py-2
+              px-4
+              block
+            "
             id="filter"
             placeholder="Buscar..."
             type="text"
@@ -88,17 +95,20 @@ export default {
     filteredAssets() {
       // if (!this.filter) { return this.assets }
       const altOrder = this.sortOrder === 1 ? -1 : 1
-      return this.assets.filter(a =>
-        a.symbol.toLowerCase().includes(this.filter.toLowerCase()) ||
-        a.name.toLowerCase().includes(this.filter.toLowerCase())
-      ).sort((a, b) => {
-        if (parseInt(a.rank) > parseInt(b.rank)) {
-          return this.sortOrder
-        }
+      return this.assets
+        .filter(
+          (a) =>
+            a.symbol.toLowerCase().includes(this.filter.toLowerCase()) ||
+            a.name.toLowerCase().includes(this.filter.toLowerCase())
+        )
+        .sort((a, b) => {
+          if (parseInt(a.rank) > parseInt(b.rank)) {
+            return this.sortOrder
+          }
 
-        return altOrder
-      })
-    }
+          return altOrder
+        })
+    },
   },
 
   props: {
@@ -115,7 +125,7 @@ export default {
 
     changeSortOrder() {
       this.sortOrder = this.sortOrder === 1 ? -1 : 1
-    }
+    },
   },
 }
 </script>
